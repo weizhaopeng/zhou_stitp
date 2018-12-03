@@ -46,7 +46,8 @@ public class issus_publication extends AppCompatActivity implements View.OnClick
                 topic.topicTechNeed = issueTechnologyNeed.getText().toString();
                 topic.topicStudentNeed = Integer.valueOf(issueStudentNumber.getText().toString());
 
-                ZhouDatabaseOpenHelper dbHelper = new ZhouDatabaseOpenHelper(this, "zhouDatabase.db", null, 2);
+                ZhouDatabaseOpenHelper dbHelper = new ZhouDatabaseOpenHelper(this,
+                        "zhouDatabase.db", null, ZhouDatabaseOpenHelper.version);
                 dbHelper.addTopicIntoDB(topic);
 
                 Intent toTeacher = new Intent(issus_publication.this, teacher.class);

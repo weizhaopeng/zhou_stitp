@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         //直接创建数据库
-        dbHelper = new ZhouDatabaseOpenHelper(this, "zhouDatabase.db", null, 2);
+        dbHelper = new ZhouDatabaseOpenHelper(this, "zhouDatabase.db", null, ZhouDatabaseOpenHelper.version);
         dbHelper.getWritableDatabase();
         //找到空间的id
         buttonLoad     = findViewById(R.id.button_load);

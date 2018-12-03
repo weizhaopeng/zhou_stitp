@@ -40,5 +40,6 @@
     <string name="issue_teacher">课题指导教师</string>
     <string name="issue_tach_need">课题需要的核心技术</string>
     <string name="issue_student_need">需要学生人数</string>
+    <string name="apply_title">申请课题</string>
 
 </resources>

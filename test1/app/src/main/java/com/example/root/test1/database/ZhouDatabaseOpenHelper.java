@@ -10,6 +10,9 @@ import com.example.root.test1.page.user.User;
 
 //数据库创建表语句常量
 public class ZhouDatabaseOpenHelper extends SQLiteOpenHelper {
+    //静态变量指代数据库版本
+    public static int version = 4;
+
     private static final String CREATE_TABLE_USERS=
             "create table users ("
                     +"user_id          integer primary key autoincrement, "
@@ -88,7 +91,7 @@ public class ZhouDatabaseOpenHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         cv.put("topic_name", t.topicName);
-        cv.put("topic_guideence_name", t.topicTeacher);
+        cv.put("topic_guidence_name", t.topicTeacher);
         cv.put("topic_category", t.topicCategory);
         cv.put("topic_technology_need", t.topicTechNeed);
         cv.put("topic_students_need", t.topicStudentNeed);

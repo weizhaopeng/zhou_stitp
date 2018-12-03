@@ -63,7 +63,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
                 user.telephoneNumber = telephoneNum.getText().toString();
                 user.isStudent = isStudent;
 
-                dbHelper = new ZhouDatabaseOpenHelper(this, "zhouDatabase.db", null, 2);
+                dbHelper = new ZhouDatabaseOpenHelper(this, "zhouDatabase.db", null, ZhouDatabaseOpenHelper.version);
                 dbHelper.addUserIntoDB(user);
 
                 Intent intent = new Intent(register.this, MainActivity.class);

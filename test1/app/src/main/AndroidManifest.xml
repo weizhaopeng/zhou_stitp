@@ -21,7 +21,8 @@
         <activity android:name=".page.student.student" />
         <activity android:name=".page.init.register" />
         <activity android:name=".page.student.Yangxiaohan" />
-        <activity android:name=".page.teacher.issus_publication"></activity>
+        <activity android:name=".page.teacher.issus_publication" />
+        <activity android:name=".page.student.ApplyTopic"></activity>
     </application>
 
 </manifest>
