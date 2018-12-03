@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".page.init.MainActivity">
     <!--静态图片和文本-->
+
     <LinearLayout
         android:id = "@+id/image_njupt_lin"
         android:layout_width="match_parent"
