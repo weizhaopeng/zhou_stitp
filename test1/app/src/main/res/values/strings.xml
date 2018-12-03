@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string name="app_name">zhou</string>
+    <string name="main_title">stitp管理系统</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_username">请输入用户名</string>
+    <string name="main_passwd">请输入密码</string>
+    <string name="load">登录</string>
+    <string name="register">没有账号？注册</string>
+    <string name="load_title">主界面登录按钮</string>
+    <string name="button_layout">输入按钮布局</string>
+    <string name="main_static_content">主界面中图片和静态文字部件</string>
+    <string name="main_image_njupt">主界面中的南邮图片</string>
+    <string name="teacher_title">stitp教师版</string>
+    <string name="release">发布课题</string>
+    <string name="application_audit">申请审核</string>
+    <string name="ads_image_name">廣告</string>
+    <string name="teacher">教师</string>
+    <string name="student">学生</string>
+    <string name="teacher_njupt">教师界面图片</string>
+    <string name="student_njupt">学生界面南邮图片</string>
+    <string name="student_title">stitp学生版</string>
+    <string name="apply">申请选做课题</string>
+    <string name="submit">提交成果</string>
+    <string name="result_audit">成果审核</string>
+    <string name="register_checked">没有账号？</string>
+    <string name="register_title">stitp用户注册</string>
+    <string name="name_real">真实姓名</string>
+    <string name="telephone">电话</string>
+    <string name="qq">QQ</string>
+    <string name="submit_info">提交</string>
+    <string name="return_main">返回</string>
+    <string name="image_register">注册顶部图片</string>
+    <string name="yangxiaohan">爱你，杨晓涵</string>
+    <string name="like">你喜欢吗？老婆</string>
+    <string name="tell">告诉魏朝鹏</string>
+    <string name="issus_publication">发布课题</string>
+    <string name="issue_name">课题名称</string>
+    <string name="issue_category">课题类别</string>
+    <string name="issue_teacher">课题指导教师</string>
+    <string name="issue_tach_need">课题需要的核心技术</string>
+    <string name="issue_student_need">需要学生人数</string>
+
+</resources>
