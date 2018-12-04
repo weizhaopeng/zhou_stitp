@@ -26,14 +26,13 @@ public class ApplyTopic extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_apply_topic);
 
-        //TODO 从数据库中提取出所有的课题行程字符串数组
+        //TODO 由于字符串数组中的后半部分null导致的程序崩溃问题，还有点击下拉框选择后对数据库的操作
         topicArray = new String[20];
         ZhouDatabaseOpenHelper dbHelper = new ZhouDatabaseOpenHelper(this, "zhouDatabase.db",
                 null, ZhouDatabaseOpenHelper.version);
+        dbHelper.getTopicAvali(topicArray);
 
-        dbHelper.getTopicAvali(topicArray, 20);
-
-        spinner = findViewById(R.id.apply_spinner);
+        spinner   = findViewById(R.id.apply_spinner);
         applyShow = findViewById(R.id.apply_show);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, topicArray);

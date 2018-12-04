@@ -108,16 +108,17 @@ public class ZhouDatabaseOpenHelper extends SQLiteOpenHelper {
     //TODO 将用户登录操作形成方法放入该类中
 
     //获取可做的课题名称字符串数组
-    public void getTopicAvali(String[] topicArray, int length) {
-        SQLiteDatabase sqliteDB = this.getReadableDatabase();
+    public void getTopicAvali(String[] topicArray) {
         Cursor cursor;
 
+        SQLiteDatabase sqliteDB = this.getReadableDatabase();
         cursor = sqliteDB.rawQuery("select topic_name from topic t where t.topic_is_full = ? and t.topic_state = ?",
                 new String[] {"0", "0"});
+        int line = cursor.getColumnCount();
+        topicArray = new String[line];
 
-        for (int i = 0; cursor.moveToNext() && i < length; i++)
-            topicArray[i] = cursor.getString(cursor.getColumnIndex("topic_name"));
-
+        for (int i = 0; cursor.moveToNext(); i++)
+            topicArray[i] = new String (cursor.getString(cursor.getColumnIndex("topic_name")));
         cursor.close();
     }
 }
