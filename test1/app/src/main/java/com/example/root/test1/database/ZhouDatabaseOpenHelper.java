@@ -2,6 +2,7 @@ package com.example.root.test1.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -11,7 +12,7 @@ import com.example.root.test1.page.user.User;
 //数据库创建表语句常量
 public class ZhouDatabaseOpenHelper extends SQLiteOpenHelper {
     //静态变量指代数据库版本
-    public static int version = 4;
+    public static int version = 6;
 
     private static final String CREATE_TABLE_USERS=
             "create table users ("
@@ -43,8 +44,8 @@ public class ZhouDatabaseOpenHelper extends SQLiteOpenHelper {
                     +"topic_researcher3       integer, "
                     +"topic_researchers_other integer,"
                     +"topic_researchers_state integer default 0, "
-                    +"topic_state             integer, "
-                    +"topic_is_full           integer, "
+                    +"topic_state             integer default 0, "
+                    +"topic_is_full           integer default 0, "
                     +"topic_delete_state      integer,"
                     +"topic_delete_date       date);";
     private Context zhouContext;
@@ -102,6 +103,22 @@ public class ZhouDatabaseOpenHelper extends SQLiteOpenHelper {
 
         sqliteDB.insert("topic", null, cv);
         cv.clear();
+    }
+
+    //TODO 将用户登录操作形成方法放入该类中
+
+    //获取可做的课题名称字符串数组
+    public void getTopicAvali(String[] topicArray, int length) {
+        SQLiteDatabase sqliteDB = this.getReadableDatabase();
+        Cursor cursor;
+
+        cursor = sqliteDB.rawQuery("select topic_name from topic t where t.topic_is_full = ? and t.topic_state = ?",
+                new String[] {"0", "0"});
+
+        for (int i = 0; cursor.moveToNext() && i < length; i++)
+            topicArray[i] = cursor.getString(cursor.getColumnIndex("topic_name"));
+
+        cursor.close();
     }
 }
 

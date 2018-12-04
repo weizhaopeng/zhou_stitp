@@ -65,6 +65,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         new String[]{usernameTemp, String.valueOf(isStudentTemp)});
                 if (cursor.moveToFirst()) {
                     String passwdReturn = cursor.getString(cursor.getColumnIndex("passwd"));
+
                     if (passwdTemp.equals(passwdReturn)) {
                         if (usernameTemp.equals("yangxiaohan") || usernameTemp.equals("杨晓涵")) {
                             intentTo = new Intent(MainActivity.this, Yangxiaohan.class);

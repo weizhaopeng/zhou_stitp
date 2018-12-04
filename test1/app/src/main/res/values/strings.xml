@@ -41,5 +41,7 @@
     <string name="issue_tach_need">课题需要的核心技术</string>
     <string name="issue_student_need">需要学生人数</string>
     <string name="apply_title">申请课题</string>
+    <string name="apply_choose_topic">请选择课题</string>
+    <string name="register_passwd_again">请再次输入密码</string>
 
 </resources>
