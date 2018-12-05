@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.root.test1.R;
 import com.example.root.test1.database.ZhouDatabaseOpenHelper;
@@ -19,7 +20,7 @@ import com.example.root.test1.page.user.User;
 public class register extends AppCompatActivity implements View.OnClickListener{
     private Button buttonSubmit, buttonReturn;
     private ZhouDatabaseOpenHelper dbHelper;
-    private EditText username, passwd, realName,
+    private EditText username, passwd, passwdAgain, realName,
             telephoneNum, qqNum, number, note, projectId;
     private RadioGroup rgUserType;
     private RadioButton rbTeacher, rbStudent;
@@ -36,6 +37,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
         //查找编辑栏id
         username   = findViewById(R.id.register_username);
         passwd     = findViewById(R.id.register_passwd);
+        passwdAgain  = findViewById(R.id.register_passwd_again);
         realName   = findViewById(R.id.register_name_real);
         telephoneNum = findViewById(R.id.register_telephone_number);
         qqNum      = findViewById(R.id.register_qq_number);
@@ -56,20 +58,32 @@ public class register extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.submit_register:
                 User user     = new User();
+                String passwdAgainTemp;
+
                 user.username = username.getText().toString();
                 user.passwd   = passwd.getText().toString();
                 user.qqNumber = qqNum.getText().toString();
                 user.realName = realName.getText().toString();
                 user.telephoneNumber = telephoneNum.getText().toString();
                 user.isStudent = isStudent;
+                passwdAgainTemp   = passwdAgain.getText().toString();
+
+                if (!passwdAgainTemp.equals(user.passwd)) {
+                    Toast.makeText(register.this, "密码前后不一致！请确认！", Toast.LENGTH_SHORT).show();
+                    break;
+                }
 
                 dbHelper = new ZhouDatabaseOpenHelper(this, "zhouDatabase.db", null, ZhouDatabaseOpenHelper.version);
-                dbHelper.addUserIntoDB(user);
-
-                Intent intent = new Intent(register.this, MainActivity.class);
-                startActivity(intent);
-                break;
-
+                //判断是否用户存在
+                if (dbHelper.userExisted(user.username, (isStudent? 1 : 0))) {
+                    Toast.makeText(register.this, "用户名已存在！", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else {
+                    dbHelper.addUserIntoDB(user);
+                    finish();
+                    break;
+                }
         }
     }
 

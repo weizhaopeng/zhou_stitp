@@ -43,13 +43,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/main_passwd" />
-            <!--
+
             <EditText
                 android:id="@+id/register_passwd_again"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/register_passwd_again" />
-               -->
+
             <EditText
                 android:id="@+id/register_name_real"
                 android:layout_width="match_parent"

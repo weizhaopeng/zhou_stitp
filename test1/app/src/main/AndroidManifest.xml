@@ -22,7 +22,10 @@
         <activity android:name=".page.init.register" />
         <activity android:name=".page.student.Yangxiaohan" />
         <activity android:name=".page.teacher.issus_publication" />
-        <activity android:name=".page.student.ApplyTopic"></activity>
+        <activity android:name=".page.student.ApplyTopic" />
+        <activity android:name=".page.teacher.AuditApply" />
+        <activity android:name=".page.student.SubmitAchieve" />
+        <activity android:name=".page.teacher.ExamineAchievement"></activity>
     </application>
 
 </manifest>

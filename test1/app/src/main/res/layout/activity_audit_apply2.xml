@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".page.student.ApplyTopic">
+    tools:context=".page.teacher.AuditApply">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,8 +13,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -24,86 +25,85 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/audit_apply_title"
+                android:textSize="30sp"
                 android:gravity="center_horizontal"
-                android:text="@string/apply_title"
-                android:textColor="@android:color/primary_text_light"
-                android:textSize="35sp"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:id="@+id/audit_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></Spinner>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/audit_name_title"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/audit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/audit_info_title"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/audit_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/audit_telephone_title"
+                android:textSize="20sp"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/issue_name"/>
-            <TextView
-                android:id="@+id/apply_show"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/darker_gray">
-            </TextView>
-
-            <Spinner
-                android:id="@+id/apply_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </Spinner>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/issue_teacher"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/apply_teacher_show"/>
+                android:id="@+id/audit_telephone"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/issue_category"/>
+                android:text="@string/audit_qq_title"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/apply_category_show"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/issue_tach_need"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/apply_technology_show"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/issue_student_need"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/apply_student_show"/>
+                android:id="@+id/audit_qq"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="10sp">
+                android:layout_marginTop="20sp">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/apply_button_submit"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/submit_apply"/>
+                    android:id="@+id/audit_pass"
+                    android:text="@string/pass"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/apply_button_return"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/return_main"/>
+                    android:id="@+id/audit_refuse"
+                    android:text="@string/nopass"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/audit_return"
+                    android:text="@string/audit_return"/>
             </LinearLayout>
 
         </LinearLayout>
-
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

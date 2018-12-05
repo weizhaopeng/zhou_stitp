@@ -27,12 +27,16 @@ public class student extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Intent toWhere;
+
         switch (v.getId()) {
             case R.id.student_apply:
-                Intent toApply = new Intent(student.this, ApplyTopic.class);
-                startActivity(toApply);
+                toWhere = new Intent(student.this, ApplyTopic.class);
+                startActivity(toWhere);
                 break;
             case R.id.student_submit:
+                toWhere = new Intent(student.this, SubmitAchieve.class);
+                startActivity(toWhere);
                 break;
         }
     }

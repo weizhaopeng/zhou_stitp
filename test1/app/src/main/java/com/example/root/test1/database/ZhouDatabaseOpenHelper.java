@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
+import com.example.root.test1.page.init.MainActivity;
 import com.example.root.test1.page.project.Topic;
 import com.example.root.test1.page.user.User;
 
@@ -105,9 +107,31 @@ public class ZhouDatabaseOpenHelper extends SQLiteOpenHelper {
         cv.clear();
     }
 
-    //TODO 将用户登录操作形成方法放入该类中
+    //TODO 将用户登录操作形成方法放入该类中:返回值0：正确，1,：用户名不存在， 2：密码错误
+    public int userLogin(String username, String passwd, int isStudent) {
+        Cursor cursor;
+        SQLiteDatabase SQLiteDB = this.getReadableDatabase();
 
-    //获取可做的课题名称字符串数组
+        cursor = SQLiteDB.rawQuery("select username from users t where t.username = ? and t.passwd = ? and t.is_student = ?",
+                new String[]{username, passwd, String.valueOf(isStudent)});
+        if (cursor.moveToFirst()) {
+           return 0;
+        }
+        else {
+            cursor = SQLiteDB.rawQuery("select username from users t where t.username = ?", new String[] {username});
+            if (cursor.moveToFirst()) {
+                cursor.close();
+                return 2;
+            }
+            //Toast.makeText(MainActivity.class, "密码错误！请确认！", Toast.LENGTH_SHORT).show();
+            else {
+                cursor.close();
+                return 1;
+            }
+            //Toast.makeText(MainActivity.class, "用户名不存在！", Toast.LENGTH_SHORT).show();
+        }
+    }
+        //获取可做的课题名称字符串数组
     public void getTopicAvali(String[] topicArray) {
         Cursor cursor;
 
@@ -120,6 +144,21 @@ public class ZhouDatabaseOpenHelper extends SQLiteOpenHelper {
         for (int i = 0; cursor.moveToNext(); i++)
             topicArray[i] = new String (cursor.getString(cursor.getColumnIndex("topic_name")));
         cursor.close();
+    }
+
+    public boolean userExisted(String username, int isstudent) {
+        Cursor cursor;
+        SQLiteDatabase sqliteDB = this.getReadableDatabase();
+        cursor = ((SQLiteDatabase) sqliteDB).rawQuery("select username from users t where t.username = ? and t.is_student = ?",
+                new String[]{username, String.valueOf(isstudent)});
+        if (cursor.moveToFirst()) {
+            cursor.close();
+            return true;
+        }
+        else {
+            cursor.close();
+            return false;
+        }
     }
 }
 

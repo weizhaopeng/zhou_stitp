@@ -14,7 +14,7 @@ import com.example.root.test1.database.ZhouDatabaseOpenHelper;
 import com.example.root.test1.page.project.Topic;
 
 public class issus_publication extends AppCompatActivity implements View.OnClickListener {
-    private Button buttonSubmit;
+    private Button buttonSubmit, buttonReturn;
     private EditText issueName, issueCategory, issueTeacher,
             issueTechnologyNeed, issueStudentNumber;
 
@@ -25,6 +25,8 @@ public class issus_publication extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_issus_publication);
 
         buttonSubmit = findViewById(R.id.issue_submit);
+        buttonReturn = findViewById(R.id.release_button_return);
+
         issueName   = findViewById(R.id.issue_name);
         issueCategory = findViewById(R.id.issue_catagory);
         issueTechnologyNeed = findViewById(R.id.issue_need);
@@ -32,6 +34,7 @@ public class issus_publication extends AppCompatActivity implements View.OnClick
         issueTeacher = findViewById(R.id.issue_teacher);
 
         buttonSubmit.setOnClickListener(this);
+        buttonReturn.setOnClickListener(this);
     }
 
     @Override
@@ -50,8 +53,10 @@ public class issus_publication extends AppCompatActivity implements View.OnClick
                         "zhouDatabase.db", null, ZhouDatabaseOpenHelper.version);
                 dbHelper.addTopicIntoDB(topic);
 
-                Intent toTeacher = new Intent(issus_publication.this, teacher.class);
-                startActivity(toTeacher);
+                finish();
+                break;
+            case R.id.release_button_return:
+                finish();
                 break;
         }
     }

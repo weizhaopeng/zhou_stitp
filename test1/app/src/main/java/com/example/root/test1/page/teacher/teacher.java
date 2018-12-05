@@ -31,20 +31,20 @@ public class teacher extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Intent toWhere;
         switch (v.getId()) {
             case R.id.button_release:
-                Intent toRelaease = new Intent(teacher.this, issus_publication.class);
-                startActivity(toRelaease);
+                toWhere = new Intent(teacher.this, issus_publication.class);
+                startActivity(toWhere);
                 break;
             case R.id.button_application_audit:
-
+                toWhere = new Intent(teacher.this, AuditApply.class);
+                startActivity(toWhere);
                 break;
             case R.id.button_result_audit:
-
+                toWhere = new Intent(teacher.this, ExamineAchievement.class);
+                startActivity(toWhere);
                 break;
-                default:
-
-                    break;
         }
     }
 }

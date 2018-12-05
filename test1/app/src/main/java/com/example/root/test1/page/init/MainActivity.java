@@ -54,19 +54,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.button_load:
-                SQLiteDatabase SQLiteDB = dbHelper.getReadableDatabase();
                 String usernameTemp = et1.getText().toString();
                 String passwdTemp   = et2.getText().toString();
                 int isStudentTemp   = (isStudent? 1: 0);
-                Cursor cursor;
                 Intent intentTo;
 
-                cursor = SQLiteDB.rawQuery("select passwd from users t where t.username = ? and t.is_student = ?",
-                        new String[]{usernameTemp, String.valueOf(isStudentTemp)});
-                if (cursor.moveToFirst()) {
-                    String passwdReturn = cursor.getString(cursor.getColumnIndex("passwd"));
-
-                    if (passwdTemp.equals(passwdReturn)) {
+                switch (dbHelper.userLogin(usernameTemp, passwdTemp, isStudentTemp)) {
+                    case 0:
                         if (usernameTemp.equals("yangxiaohan") || usernameTemp.equals("杨晓涵")) {
                             intentTo = new Intent(MainActivity.this, Yangxiaohan.class);
                             //startActivity(intentTo);
@@ -83,11 +77,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
                             }
                         }
                         startActivity(intentTo);
-                    }
-                    else
-                        Toast.makeText(MainActivity.this, "登录失败：密码错误", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Toast.makeText(MainActivity.this, "用户名不存在！", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Toast.makeText(MainActivity.this, "密码错误！请确认！", Toast.LENGTH_SHORT).show();
+                        break;
                 }
-                cursor.close();
                 break;
             case  R.id.button_register:
                 Intent intent = new Intent(MainActivity.this, register.class);
