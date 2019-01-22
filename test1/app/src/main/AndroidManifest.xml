@@ -12,12 +12,12 @@
         <activity android:name=".page.init.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".page.teacher.teacher" />
-        <activity android:name=".page.init.ads" />
+        <!--<activity android:name=".page.init.ads" />-->
         <activity android:name=".page.student.student" />
         <activity android:name=".page.init.register" />
         <activity android:name=".page.student.Yangxiaohan" />

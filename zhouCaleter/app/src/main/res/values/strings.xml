@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">zhouCaleter</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="main_title">一天</string>
+    <string name="main_return">退出</string>
+    <string name="main_date">日期</string>
+    <string name="day_before">前一天</string>
+    <string name="day_after">后一天</string>
+    <string name="time_interval">时间区间</string>
+    <string name="plan">计划事项</string>
+    <string name="main_new">新建</string>
+    <string name="new_submit">提交</string>
+    <string name="new_return">返回</string>
+    <string name="new_today">今天是：</string>
+</resources>

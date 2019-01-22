@@ -7,44 +7,54 @@
     tools:context=".page.teacher.teacher">
 
     <!--教师界面静态部分-->
-    <LinearLayout
-    android:id="@+id/teacher_static_lin"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/teacher_static_lin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            >
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:contentDescription="@string/teacher_njupt"
-            android:src="@drawable/main_njupt" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/teacher_njupt"
+                android:src="@drawable/main_njupt" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:paddingVertical="5sp"
-            android:text="@string/teacher_title"
-            android:textSize="40sp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:paddingVertical="5sp"
+                android:text="@string/teacher_title"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button_release"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/release" />
-        <Button
-            android:id="@+id/button_application_audit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/application_audit" />
-        <Button
-            android:id="@+id/button_result_audit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/result_audit"/>
-    </LinearLayout>
+            <Button
+                android:id="@+id/button_release"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/release" />
+            <Button
+                android:id="@+id/button_application_audit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/application_audit" />
+            <Button
+                android:id="@+id/button_result_audit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/result_audit"/>
+            <Button
+                android:id="@+id/button_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="测试"/>
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

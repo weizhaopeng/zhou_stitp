@@ -12,7 +12,7 @@ public class ads extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ads);
-        Intent intent = new Intent(ads.this, MainActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(ads.this, MainActivity.class);
+        //startActivity(intent);
     }
 }
