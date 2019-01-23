@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -33,17 +35,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+
         //直接创建数据库
         dbHelper = new ZhouDatabaseOpenHelper(this, "zhouDatabase.db", null, ZhouDatabaseOpenHelper.version);
         dbHelper.getWritableDatabase();
-        //找到空间的id
-        buttonLoad     = findViewById(R.id.button_load);
-        buttonRegister = findViewById(R.id.button_register);
-        et1    = findViewById(R.id.et_username);
-        et2    = findViewById(R.id.et_passwd);
-        rg  = findViewById(R.id.radio_group_registrar);
-        rb1 = findViewById(R.id.radio_button_teacher);
-        rb2 = findViewById(R.id.radio_button_student);
+
+        //找到控件的对象id
+        buttonLoad     = (Button)findViewById(R.id.button_load);
+        buttonRegister = (Button)findViewById(R.id.button_register);
+        et1            = (EditText)findViewById(R.id.et_username);
+        et2            = (EditText)findViewById(R.id.et_passwd);
+        rg             = findViewById(R.id.radio_group_registrar);
+        rb1            = findViewById(R.id.radio_button_teacher);
+        rb2            = findViewById(R.id.radio_button_student);
+
         //按钮监听器
         buttonRegister.setOnClickListener(this);
         buttonLoad.setOnClickListener(this);
@@ -96,6 +101,30 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         //Intent intent = new Intent(MainActivity.this, teacher.class);
         //startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item_register:
+                Intent toRegister = new Intent(MainActivity.this, register.class);
+                startActivity(toRegister);
+                break;
+
+            case R.id.item_main_unload:
+                finish();
+                break;
+
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     class RadioGroupListener implements RadioGroup.OnCheckedChangeListener {

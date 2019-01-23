@@ -16,10 +16,11 @@ public class teacher extends Activity implements View.OnClickListener {
     private Button buttonIssuePublication, buttonApplyExamine, buttonResultExamine;
 
     @Override
+    //创建这个页面的对象的时候的相关操作，也就是这个页面的内容
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher);
-        Toast.makeText(teacher.this, "登录成功", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(teacher.this, "登录成功", Toast.LENGTH_SHORT).show();
 
         buttonIssuePublication = (Button)findViewById(R.id.button_release);
         buttonApplyExamine = (Button)findViewById(R.id.button_application_audit);
@@ -50,12 +51,14 @@ public class teacher extends Activity implements View.OnClickListener {
     }
 
     @Override
+    //创建这个页面中的菜单的内容
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.teacher, menu);//第二个参数指定的是我们将菜单选项添加到哪个菜单对象中
         return(true);
     }
 
     @Override
+    //当选择某个选项的时候执行的逻辑
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_add_teacher:
