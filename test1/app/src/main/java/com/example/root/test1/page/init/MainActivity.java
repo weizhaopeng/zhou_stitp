@@ -81,6 +81,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                                 //startActivity(intentTo);
                             }
                         }
+                        Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
                         startActivity(intentTo);
                         break;
                     case 1:

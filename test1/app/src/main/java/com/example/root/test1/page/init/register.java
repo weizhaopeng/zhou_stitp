@@ -81,6 +81,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
                 }
                 else {
                     dbHelper.addUserIntoDB(user);
+                    Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
                     finish();
                     break;
                 }

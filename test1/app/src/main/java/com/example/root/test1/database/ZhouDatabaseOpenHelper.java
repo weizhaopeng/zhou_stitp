@@ -5,9 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
+import android.util.Log;
 
-import com.example.root.test1.page.init.MainActivity;
 import com.example.root.test1.page.project.Topic;
 import com.example.root.test1.page.user.User;
 
@@ -52,8 +51,7 @@ public class ZhouDatabaseOpenHelper extends SQLiteOpenHelper {
                     +"topic_delete_date       date);";
     private Context zhouContext;
 
-    public ZhouDatabaseOpenHelper(
-            Context contextCreate, String dbName, SQLiteDatabase.CursorFactory cf, int version) {
+    public ZhouDatabaseOpenHelper(Context contextCreate, String dbName, SQLiteDatabase.CursorFactory cf, int version) {
         super(contextCreate, dbName, cf, version);
         zhouContext = contextCreate;
     }
@@ -131,25 +129,29 @@ public class ZhouDatabaseOpenHelper extends SQLiteOpenHelper {
             //Toast.makeText(MainActivity.class, "用户名不存在！", Toast.LENGTH_SHORT).show();
         }
     }
-        //获取可做的课题名称字符串数组
-    public void getTopicAvali(String[] topicArray) {
+
+    //获取可做的课题名称字符串数组
+    public String[] getTopicAvali() {
         Cursor cursor;
+        int    line;
 
         SQLiteDatabase sqliteDB = this.getReadableDatabase();
-        cursor = sqliteDB.rawQuery("select topic_name from topic t where t.topic_is_full = ? and t.topic_state = ?",
-                new String[] {"0", "0"});
-        int line = cursor.getColumnCount();
-        topicArray = new String[line];
+        cursor = sqliteDB.rawQuery("select topic_name from topic t where t.topic_is_full = ? and t.topic_state = ?", new String[] {"0", "0"});
+        line = cursor.getCount();
 
-        for (int i = 0; cursor.moveToNext(); i++)
-            topicArray[i] = new String (cursor.getString(cursor.getColumnIndex("topic_name")));
+        String[] returnString = new String[line];
+        for (int i = 0; cursor.moveToNext() && i < line; i++)
+            returnString[i] = new String(cursor.getString(cursor.getColumnIndex("topic_name")));
+        Log.d("StringArray", "从数据库中读取到的数据"+returnString[0]);
+
         cursor.close();
+        return(returnString);
     }
 
     public boolean userExisted(String username, int isstudent) {
         Cursor cursor;
         SQLiteDatabase sqliteDB = this.getReadableDatabase();
-        cursor = ((SQLiteDatabase) sqliteDB).rawQuery("select username from users t where t.username = ? and t.is_student = ?",
+        cursor = ((SQLiteDatabase)sqliteDB).rawQuery("select username from users t where t.username = ? and t.is_student = ?",
                 new String[]{username, String.valueOf(isstudent)});
         if (cursor.moveToFirst()) {
             cursor.close();

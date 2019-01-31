@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.root.test1.R;
 import com.example.root.test1.database.ZhouDatabaseOpenHelper;
@@ -52,7 +53,7 @@ public class issus_publication extends AppCompatActivity implements View.OnClick
                 ZhouDatabaseOpenHelper dbHelper = new ZhouDatabaseOpenHelper(this,
                         "zhouDatabase.db", null, ZhouDatabaseOpenHelper.version);
                 dbHelper.addTopicIntoDB(topic);
-
+                Toast.makeText(this, "项目发布成功", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
             case R.id.release_button_return:
